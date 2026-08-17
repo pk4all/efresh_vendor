@@ -1,5 +1,7 @@
 import Sidebar from '@/components/Sidebar';
 import Topbar from '@/components/Topbar';
+import MobileAppbar from '@/components/MobileAppbar';
+import BottomNav from '@/components/BottomNav';
 
 export default function DashboardLayout({
   children,
@@ -8,13 +10,15 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="portal active">
-      <Sidebar />
+      <div className="desktop-only"><Sidebar /></div>
+      <MobileAppbar />
       <main className="main">
-        <Topbar />
+        <div className="desktop-only"><Topbar /></div>
         <div className="content">
           {children}
         </div>
       </main>
+      <BottomNav />
     </div>
   );
 }

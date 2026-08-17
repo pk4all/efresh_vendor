@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import UploadInvoiceDrawer from '@/components/UploadInvoiceDrawer';
 
 export default function Invoices() {
   const [activeTab, setActiveTab] = useState('invoices');
+  const [isInvoiceDrawerOpen, setIsInvoiceDrawerOpen] = useState(false);
 
   return (
     <div className="page active" id="page-invoices">
@@ -12,7 +14,7 @@ export default function Invoices() {
           <h1>Invoices & Payments</h1>
           <p>Submit invoices against confirmed POs and track matching, approval and payment status.</p>
         </div>
-        <button className="btn primary" id="open-invoice-upload">＋ Upload Invoice</button>
+        <button className="btn primary" id="open-invoice-upload" onClick={() => setIsInvoiceDrawerOpen(true)}>＋ Upload Invoice</button>
       </div>
       
       <div className="metrics">
@@ -196,6 +198,11 @@ export default function Invoices() {
           </div>
         )}
       </div>
+      
+      <UploadInvoiceDrawer 
+        isOpen={isInvoiceDrawerOpen} 
+        onClose={() => setIsInvoiceDrawerOpen(false)} 
+      />
     </div>
   );
 }

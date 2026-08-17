@@ -4,7 +4,12 @@ import { login } from '@/app/actions';
 export default function LoginPage() {
   return (
     <div id="login-shell" className="login-shell">
-      <section className="login-brand-panel">
+      <div className="mobile-login-header mobile-only">
+        <div className="brand-mark" style={{ margin: 'auto' }}>🚚</div>
+        <h1>eFresh Supplier</h1>
+        <p>Supplier Portal</p>
+      </div>
+      <section className="login-brand-panel desktop-only">
         <div className="login-logo">
           <div className="brand-mark">🚚</div>
           <div className="brand-name">

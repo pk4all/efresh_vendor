@@ -1,6 +1,12 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
+import AddDispatchDrawer from '@/components/AddDispatchDrawer';
 
 export default function Deliveries() {
+  const [isDispatchDrawerOpen, setIsDispatchDrawerOpen] = useState(false);
+
   return (
     <div className="page active" id="page-deliveries">
       <div className="page-head">
@@ -32,7 +38,7 @@ export default function Deliveries() {
                   <span className="tag blue">$3,126.20</span>
                 </div>
               </div>
-              <button className="btn sm primary dispatch-btn">Add Dispatch</button>
+              <button className="btn sm primary dispatch-btn" onClick={() => setIsDispatchDrawerOpen(true)}>Add Dispatch</button>
             </div>
             
             <div className="delivery-card">
@@ -62,7 +68,7 @@ export default function Deliveries() {
                   <span className="tag blue">$4,980.00</span>
                 </div>
               </div>
-              <button className="btn sm dispatch-btn">Dispatch</button>
+              <button className="btn sm dispatch-btn" onClick={() => setIsDispatchDrawerOpen(true)}>Dispatch</button>
             </div>
           </div>
         </div>
@@ -102,6 +108,11 @@ export default function Deliveries() {
           </div>
         </div>
       </div>
+      
+      <AddDispatchDrawer 
+        isOpen={isDispatchDrawerOpen} 
+        onClose={() => setIsDispatchDrawerOpen(false)} 
+      />
     </div>
   );
 }

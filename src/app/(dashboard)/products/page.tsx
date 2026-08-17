@@ -1,9 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import ConnectApiDrawer from '@/components/ConnectApiDrawer';
+import UploadCsvDrawer from '@/components/UploadCsvDrawer';
 
 export default function Products() {
   const [activeTab, setActiveTab] = useState('mapped');
+  const [isApiDrawerOpen, setIsApiDrawerOpen] = useState(false);
+  const [isCsvDrawerOpen, setIsCsvDrawerOpen] = useState(false);
 
   return (
     <div className="page active" id="page-products">
@@ -14,8 +18,8 @@ export default function Products() {
         </div>
         <div className="actions">
           <button className="btn" id="download-sample-csv">↓ Sample CSV</button>
-          <button className="btn soft" id="open-api-setup">🔌 Connect API</button>
-          <button className="btn primary" id="open-csv">⇧ Upload Product CSV</button>
+          <button className="btn soft" id="open-api-setup" onClick={() => setIsApiDrawerOpen(true)}>🔌 Connect API</button>
+          <button className="btn primary" id="open-csv" onClick={() => setIsCsvDrawerOpen(true)}>⇧ Upload Product CSV</button>
         </div>
       </div>
       
@@ -153,9 +157,9 @@ export default function Products() {
               </div>
               <div className="actions">
                 <button className="btn" id="download-sample-csv-2">↓ Sample CSV</button>
-                <button className="btn soft" id="open-api-setup-2">🔌 API Setup</button>
+                <button className="btn soft" id="open-api-setup-2" onClick={() => setIsApiDrawerOpen(true)}>🔌 API Setup</button>
                 <button className="btn soft" id="catalogue-settings">CSV Mapping Settings</button>
-                <button className="btn primary" id="open-csv-2">⇧ Upload CSV</button>
+                <button className="btn primary" id="open-csv-2" onClick={() => setIsCsvDrawerOpen(true)}>⇧ Upload CSV</button>
               </div>
             </div>
             <div className="card-body">
@@ -236,6 +240,15 @@ export default function Products() {
           </div>
         )}
       </div>
+      
+      <ConnectApiDrawer 
+        isOpen={isApiDrawerOpen} 
+        onClose={() => setIsApiDrawerOpen(false)} 
+      />
+      <UploadCsvDrawer 
+        isOpen={isCsvDrawerOpen} 
+        onClose={() => setIsCsvDrawerOpen(false)} 
+      />
     </div>
   );
 }
